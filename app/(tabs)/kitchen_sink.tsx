@@ -40,11 +40,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 */
 
 
-function Card({ title, subtitle, children }) {
+function Card({ title, subtitle, children }: { title: string; subtitle?: string; children: React.ReactNode }) {
     return (
         <ThemedView style={styles.card}>
             <ThemedText style={styles.h2}>{title}</ThemedText>
-            <ThemedText style={styles.p}>{subtitle}</ThemedText>
+            {subtitle && <ThemedText style={styles.p}>{subtitle}</ThemedText>}
             <CenteredMessage>
                 {children}
             </CenteredMessage>
@@ -52,7 +52,7 @@ function Card({ title, subtitle, children }) {
     );
 }
 
-function CenteredMessage({ children }) {
+function CenteredMessage({ children }: { children: React.ReactNode }) {
     return (
         <ThemedView style={styles.center}>
             {children}
@@ -77,11 +77,26 @@ Goal for Today:
     - emptyMessage: string
 */
 
-function DataPanel({ state, title, subtitle, successContent, loadingMessage, errorMessage, emptyMessage }) {
+// Typescript has a very important new keyword: `type`
+type DataPanelProps = {
+    state: "loading" | "error" | "empty" | "success"; // union or enum type
+    title: string;
+    subtitle?: string;
+    successContent?: React.ReactNode;
+    loadingMessage?: string;
+    errorMessage?: string;
+    emptyMessage?: string;
+}
+
+// Schema (What is the shape of my data?)
+// "What is a great simple data schema for...XYZ?"
+
+function DataPanel(
+    { state, title, subtitle, successContent, loadingMessage, errorMessage, emptyMessage }: DataPanelProps
+) {
     // If someone forgets to set `state`
     state = state || "empty";
 
-    title = title || "Empty State";
     subtitle = subtitle || "No content available";
 
     errorMessage = errorMessage || "Something went wrong. Please try again.";
@@ -131,8 +146,8 @@ function DataPanel({ state, title, subtitle, successContent, loadingMessage, err
  * - Includes a few extra primitives (TextInput, Switch, Image, Pressable)
  */
 export default function KitchenSinkStatesScreen() {
-    const state = "loading"; // loading | error | empty | success
-
+    const state = "error"; // loading | error | empty | success
+    const loadingMessage = "We're getting your data"
     const successContent = <ProfileExample />;
 
     return (
@@ -145,7 +160,13 @@ export default function KitchenSinkStatesScreen() {
                         represent loading, error, empty, and success states.
                     </ThemedText>
 
-                    <DataPanel state={state} successContent={successContent}></DataPanel>
+                    <DataPanel
+                        state={state}
+                        title="Example Card"
+                        successContent={successContent}
+                        loadingMessage={loadingMessage}
+                    >
+                    </DataPanel>
 
                     <ControlsExample></ControlsExample>
 
@@ -158,7 +179,7 @@ export default function KitchenSinkStatesScreen() {
     );
 }
 
-function Tag({ label }) {
+function Tag({ label }: { label: string }) {
     return (
         <ThemedView style={styles.tag}>
             <ThemedText style={styles.tagText}>{label}</ThemedText>
