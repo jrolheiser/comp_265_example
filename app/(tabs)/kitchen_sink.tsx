@@ -11,6 +11,12 @@ import {
     Switch,
     TextInput
 } from "react-native";
+import {
+    Avatar,
+    Button,
+    Card as PCard,
+    Text as PText
+} from "react-native-paper";
 
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -139,6 +145,23 @@ function DataPanel(
     )
 }
 
+const LeftContent = props => <Avatar.Icon {...props} icon="folder" />
+
+const PaperCardExample = () => (
+    <PCard>
+        <PCard.Title title="Card Title" subtitle="Card Subtitle" left={LeftContent} />
+        <PCard.Content>
+            <PText variant="titleLarge">Social Post</PText>
+            <PText variant="bodyMedium">Feed Content</PText>
+        </PCard.Content>
+        <PCard.Cover source={{ uri: 'https://picsum.photos/700' }} />
+        <PCard.Actions>
+            <Button>Cancel</Button>
+            <Button>Ok</Button>
+        </PCard.Actions>
+    </PCard>
+);
+
 /**
  * KitchenSinkStatesScreen
  * - Shows "Loading / Error / Empty / Success" as simple cards.
@@ -173,6 +196,10 @@ export default function KitchenSinkStatesScreen() {
                     <ThemedText style={styles.footer}>
                         Next step: refactor each state card into a reusable DataPanel component.
                     </ThemedText>
+                </ThemedView>
+
+                <ThemedView>
+                    <PaperCardExample></PaperCardExample>
                 </ThemedView>
             </ScrollView>
         </SafeAreaView>
