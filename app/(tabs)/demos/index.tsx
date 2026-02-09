@@ -22,6 +22,15 @@ export default function HomeScreen() {
             >
                 Go to Kitchen Sink (Multi State Data Panel)
             </Link>
+
+            <Link
+                href={{
+                    pathname: "/demos/flip_card",
+                }}
+                style={styles.button}
+            >
+                Go to Flip Card Example
+            </Link>
         </View>
     );
 }
