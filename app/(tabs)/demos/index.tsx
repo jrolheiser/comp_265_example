@@ -31,6 +31,24 @@ export default function HomeScreen() {
             >
                 Go to Flip Card Example
             </Link>
+
+            <Link
+                href={{
+                    pathname: "/demos/todo_app",
+                }}
+                style={styles.button}
+            >
+                Go to Todo App
+            </Link>
+
+            <Link
+                href={{
+                    pathname: "/demos/storage_debugger",
+                }}
+                style={styles.button}
+            >
+                Go to DB Storage Debugger
+            </Link>
         </View>
     );
 }

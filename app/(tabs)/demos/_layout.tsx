@@ -8,6 +8,8 @@ export default function Layout() {
             <Stack.Screen name="feb_4" options={{ title: "Feb 4th" }} />
             <Stack.Screen name="kitchen_sink" options={{ title: "Kitchen Sink" }} />
             <Stack.Screen name="flip_card" options={{ title: "Flip Card" }} />
+            <Stack.Screen name="todo_app" options={{ title: "Todo App" }} />
+            <Stack.Screen name="storage_debugger" options={{ title: "DB Storage Debugger" }} />
         </Stack>
     );
 }
