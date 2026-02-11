@@ -6,6 +6,15 @@ export default function HomeScreen() {
         <View style={styles.container}>
             <Text>Demo Examples</Text>
 
+            <Link
+                href={{
+                    pathname: "/demos/kitchen_sink",
+                }}
+                style={styles.button}
+            >
+                Go to Kitchen Sink (Jan 14th)
+            </Link>
+
             <Link href="/demos/exercise_1" style={styles.button}>
                 Go to Basic Styled Weather App (Exercise 1)
             </Link>
@@ -16,20 +25,11 @@ export default function HomeScreen() {
 
             <Link
                 href={{
-                    pathname: "/demos/kitchen_sink",
-                }}
-                style={styles.button}
-            >
-                Go to Kitchen Sink (Multi State Data Panel)
-            </Link>
-
-            <Link
-                href={{
                     pathname: "/demos/flip_card",
                 }}
                 style={styles.button}
             >
-                Go to Flip Card Example
+                Go to Flip Card Example (Feb 9th)
             </Link>
 
             <Link
@@ -38,7 +38,7 @@ export default function HomeScreen() {
                 }}
                 style={styles.button}
             >
-                Go to Todo App
+                Go to Todo App (Feb 11th)
             </Link>
 
             <Link
@@ -47,7 +47,7 @@ export default function HomeScreen() {
                 }}
                 style={styles.button}
             >
-                Go to DB Storage Debugger
+                Go to DB Storage Debugger (Feb 11th)
             </Link>
         </View>
     );
