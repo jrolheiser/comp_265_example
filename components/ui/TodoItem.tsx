@@ -1,30 +1,24 @@
 import * as React from "react";
 import { StyleSheet, View } from "react-native";
 import { Checkbox, IconButton, Text } from "react-native-paper";
-
-type Todo = {
-    id: string;
-    name: string;
-    done: boolean;
-};
+import { Todo, useTodos } from "../contexts/TodoContext";
 
 export function TodoItem({
     todo,
-    onToggle,
-    onDelete,
 }: {
     todo: Todo;
-    onToggle: (id: string) => void;
-    onDelete: (id: string) => void;
 }) {
+    // Use common / shared todo context
+    const { toggleTodo, deleteTodo } = useTodos();
+
     return (
         <View style={styles.row}>
             <Checkbox
                 status={todo.done ? "checked" : "unchecked"}
-                onPress={() => onToggle(todo.id)}
+                onPress={() => toggleTodo(todo.id)}
             />
             <Text style={[styles.text, todo.done && styles.done]}>{todo.name}</Text>
-            <IconButton icon="trash-can-outline" onPress={() => onDelete(todo.id)} />
+            <IconButton icon="trash-can-outline" onPress={() => deleteTodo(todo.id)} />
         </View>
     );
 }
